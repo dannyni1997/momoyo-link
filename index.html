@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Momoyo – Double the Fun!</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;0,900;1,700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --dark:    #142414;
+  --mid:     #1C3A1C;
+  --surface: #1E3D1E;
+  --green:   #7BC143;
+  --green2:  #5FA02E;
+  --green-dim: rgba(123,193,67,0.12);
+  --white:   #FFFFFF;
+  --offwhite:#F0F5E8;
+  --muted:   rgba(255,255,255,0.5);
+  --gold:    #E8C84A;
+  --heading: 'Montserrat', sans-serif;
+  --body:    'Open Sans', sans-serif;
+}
+
+body{
+  font-family: var(--body);
+  background: var(--dark);
+  color: var(--white);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── HERO BANNER ── */
+.hero{
+  position: relative;
+  background: linear-gradient(160deg, #0E2010 0%, #1C3A1C 55%, #0E2010 100%);
+  padding: 44px 24px 36px;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* matcha powder texture overlay */
+.hero::before{
+  content:'';
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 200px 120px at 80% 20%, rgba(123,193,67,0.15) 0%, transparent 70%),
+    radial-gradient(ellipse 160px 200px at 10% 80%, rgba(123,193,67,0.08) 0%, transparent 70%);
+  pointer-events:none;
+}
+
+.brand-row{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:28px;position:relative;z-index:1;
+}
+.brand-name{
+  font-family:var(--heading);font-weight:900;font-size:20px;
+  color:var(--white);letter-spacing:0.08em;text-transform:uppercase;
+}
+.tcs-link{
+  font-size:10px;color:var(--muted);text-decoration:none;
+  border:1px solid rgba(255,255,255,0.2);
+  padding:3px 8px;border-radius:100px;
+}
+
+.hero-eyebrow{
+  font-family:var(--heading);font-size:13px;font-weight:700;
+  color:var(--green);letter-spacing:0.1em;text-transform:uppercase;
+  margin-bottom:8px;position:relative;z-index:1;
+}
+
+.hero-h1{
+  font-family:var(--heading);font-weight:900;
+  font-size:42px;line-height:1.0;
+  color:var(--white);text-transform:uppercase;
+  margin-bottom:6px;position:relative;z-index:1;
+  letter-spacing:-0.01em;
+}
+.hero-h1 em{
+  font-style:italic;color:var(--green);
+}
+
+.hero-sub{
+  font-size:13px;color:rgba(255,255,255,0.65);
+  margin-bottom:28px;position:relative;z-index:1;
+  font-weight:600;letter-spacing:0.04em;
+}
+
+/* big discount display */
+.discount-block{
+  position:relative;z-index:1;
+  display:inline-flex;align-items:flex-start;gap:0;
+  margin-bottom:8px;
+}
+.d-both{
+  font-family:var(--heading);font-weight:700;font-size:14px;
+  color:var(--white);line-height:1;
+  background:var(--mid);
+  padding:8px 12px 8px 14px;
+  border-radius:12px 0 0 12px;
+  border:1px solid rgba(123,193,67,0.2);
+  display:flex;flex-direction:column;justify-content:center;
+  text-transform:uppercase;letter-spacing:0.04em;
+}
+.d-both span{font-size:10px;opacity:0.6;font-weight:400;}
+.d-num{
+  font-family:var(--heading);font-weight:900;font-size:80px;
+  color:var(--green);line-height:0.85;
+  padding:0 4px;
+}
+.d-pct{
+  display:flex;flex-direction:column;
+  justify-content:flex-start;padding-top:6px;
+}
+.d-pct-sym{
+  font-family:var(--heading);font-weight:900;font-size:28px;
+  color:var(--green);line-height:1;
+}
+.d-off{
+  font-family:var(--heading);font-weight:900;font-size:18px;
+  color:var(--white);line-height:1;
+}
+
+.hero-series{
+  font-family:var(--heading);font-size:11px;font-weight:700;
+  color:var(--green);letter-spacing:0.18em;text-transform:uppercase;
+  position:relative;z-index:1;margin-bottom:0;
+  opacity:0.8;
+}
+
+/* drinks row */
+.drinks{
+  display:flex;align-items:flex-end;justify-content:center;
+  gap:-8px;margin:20px -24px 0;
+  position:relative;z-index:1;
+  overflow:hidden;height:170px;
+}
+.drink{
+  display:flex;flex-direction:column;align-items:center;
+  position:relative;
+}
+.drink-img{
+  font-size:72px;line-height:1;
+  filter:drop-shadow(0 8px 16px rgba(0,0,0,0.5));
+}
+.drink-label{
+  position:absolute;top:-18px;
+  background:rgba(0,0,0,0.5);
+  backdrop-filter:blur(4px);
+  font-size:8px;color:var(--offwhite);
+  padding:2px 7px;border-radius:100px;
+  white-space:nowrap;font-weight:600;
+  border:1px solid rgba(123,193,67,0.3);
+}
+.drink.center .drink-img{font-size:90px;margin-bottom:0;}
+.new-badge{
+  position:absolute;top:-20px;right:-8px;
+  background:var(--green);color:#0E2010;
+  font-size:8px;font-weight:900;
+  padding:2px 6px;border-radius:100px;
+  text-transform:uppercase;letter-spacing:0.06em;
+}
+
+/* ── NEW USER BANNER ── */
+#new-banner{
+  display:none;
+  background:var(--green);padding:12px 20px;text-align:center;
+}
+#new-banner p{color:#0E2010;font-family:var(--heading);font-weight:800;font-size:14px;text-transform:uppercase;}
+#new-banner span{display:block;font-size:11px;color:rgba(14,32,16,0.7);margin-top:2px;font-weight:600;}
+
+/* ── UID ROW ── */
+.uid-row{
+  display:none;
+  align-items:center;justify-content:center;gap:8px;
+  margin:0 20px;padding:10px 16px;
+  background:var(--green-dim);border-radius:10px;
+  border:1px solid rgba(123,193,67,0.2);
+  margin-top:16px;
+}
+.uid-label{font-size:11px;color:var(--muted);font-weight:600;}
+.uid-val{font-size:12px;font-weight:700;color:var(--green);font-family:monospace;letter-spacing:0.08em;}
+
+/* ── MODE TOGGLE ── */
+.mode-wrap{padding:18px 20px 0;}
+.mode-toggle{
+  display:grid;grid-template-columns:1fr 1fr;
+  background:var(--mid);border-radius:14px;padding:4px;gap:4px;
+  border:1px solid rgba(123,193,67,0.15);
+}
+.mode-btn{
+  padding:11px 8px;border-radius:11px;
+  border:none;background:transparent;
+  font-family:var(--heading);font-size:11px;font-weight:700;
+  color:var(--muted);cursor:pointer;
+  transition:all 0.2s ease;text-align:center;
+  text-transform:uppercase;letter-spacing:0.06em;line-height:1.5;
+}
+.mode-btn.active{
+  background:var(--green);color:#0E2010;
+}
+.mode-btn .mico{font-size:18px;display:block;margin-bottom:3px;}
+
+/* ── PANELS ── */
+.panel{display:none;padding:18px 20px 12px;animation:fadeUp 0.25s ease both;}
+.panel.active{display:block;}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(8px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* ── SIMPLE PANEL ── */
+.simple-main{
+  background:var(--surface);border-radius:16px;
+  padding:24px 20px;text-align:center;margin-bottom:12px;
+  border:1px solid rgba(123,193,67,0.15);
+  position:relative;overflow:hidden;
+}
+.simple-main::before{
+  content:'';position:absolute;
+  top:-40px;right:-40px;
+  width:150px;height:150px;border-radius:50%;
+  background:radial-gradient(circle, rgba(123,193,67,0.1) 0%, transparent 70%);
+}
+.s-big{
+  font-family:var(--heading);font-size:80px;font-weight:900;
+  color:var(--green);line-height:0.9;
+}
+.s-off{
+  font-family:var(--heading);font-size:22px;font-weight:900;
+  color:var(--white);letter-spacing:0.08em;margin-bottom:4px;
+}
+.s-each{
+  font-size:12px;color:var(--muted);margin-bottom:20px;font-weight:600;
+}
+.both-chip{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--green-dim);border-radius:12px;
+  padding:12px 18px;border:1px solid rgba(123,193,67,0.2);
+}
+.both-chip p{font-size:13px;color:var(--white);text-align:left;line-height:1.6;font-weight:600;}
+.both-chip small{color:var(--muted);font-size:11px;font-weight:400;}
+
+.how-card{
+  background:var(--surface);border-radius:16px;
+  padding:18px 20px;
+  border:1px solid rgba(123,193,67,0.1);
+}
+.how-title{
+  font-family:var(--heading);font-size:11px;font-weight:700;
+  color:var(--green);text-transform:uppercase;letter-spacing:0.1em;
+  margin-bottom:14px;
+}
+.how-row{
+  display:flex;align-items:center;gap:14px;
+  padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);
+  font-size:13px;color:rgba(255,255,255,0.7);font-weight:400;
+}
+.how-row:last-child{border-bottom:none;}
+.how-n{
+  width:26px;height:26px;border-radius:50%;flex-shrink:0;
+  background:var(--green);color:#0E2010;
+  font-size:12px;font-weight:900;font-family:var(--heading);
+  display:flex;align-items:center;justify-content:center;
+}
+
+/* ── RICH PANEL ── */
+.sec-label{
+  font-family:var(--heading);font-size:10px;font-weight:700;
+  letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:10px;
+}
+.rcard{
+  background:var(--surface);border-radius:16px;
+  padding:20px;margin-bottom:12px;
+  border:1px solid rgba(123,193,67,0.1);
+}
+.role-tag{
+  display:inline-block;font-family:var(--heading);
+  font-size:10px;font-weight:700;letter-spacing:0.1em;
+  text-transform:uppercase;padding:4px 12px;
+  border-radius:100px;margin-bottom:14px;
+}
+.tag-new{background:rgba(232,200,74,0.15);color:var(--gold);border:1px solid rgba(232,200,74,0.3);}
+.tag-old{background:var(--green-dim);color:var(--green);border:1px solid rgba(123,193,67,0.25);}
+
+.r-row{
+  display:flex;align-items:flex-start;gap:14px;
+  padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.05);
+}
+.r-row:last-child{border-bottom:none;padding-bottom:0;}
+.r-icon{
+  width:34px;height:34px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--heading);font-size:13px;font-weight:900;
+  margin-top:1px;
+}
+.ri-green{background:var(--green);color:#0E2010;}
+.ri-gold{background:var(--gold);color:#0E2010;}
+.ri-check{background:var(--green-dim);color:var(--green);font-size:16px;}
+.r-text h4{font-family:var(--heading);font-size:14px;font-weight:700;color:var(--white);margin-bottom:3px;}
+.r-text p{font-size:12px;color:var(--muted);line-height:1.5;}
+.r-text .ms{font-size:11px;color:rgba(255,255,255,0.25);margin-top:1px;}
+
+.voucher-pill{
+  display:inline-block;font-family:var(--heading);
+  font-size:11px;font-weight:800;letter-spacing:0.04em;
+  padding:4px 12px;border-radius:100px;margin-top:7px;
+  text-transform:uppercase;
+}
+.vp-green{background:var(--green);color:#0E2010;}
+.vp-gold{background:var(--gold);color:#0E2010;}
+
+/* progress */
+.prog-box{
+  background:rgba(123,193,67,0.07);border-radius:14px;
+  padding:16px;margin-top:10px;
+  border:1px solid rgba(123,193,67,0.18);
+}
+.prog-head{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:10px;
+}
+.prog-head span{font-size:12px;color:var(--muted);font-weight:600;font-family:var(--heading);text-transform:uppercase;letter-spacing:0.08em;}
+.prog-num{font-family:var(--heading);font-size:24px;font-weight:900;color:var(--green);}
+.prog-bg{background:rgba(123,193,67,0.12);border-radius:100px;height:7px;overflow:hidden;margin-bottom:6px;}
+.prog-fill{height:100%;border-radius:100px;background:linear-gradient(90deg,var(--green2),var(--green));transition:width 0.5s ease;}
+.prog-marks{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);}
+.prog-marks .m{color:var(--green);font-weight:700;}
+.prog-msg{margin-top:12px;text-align:center;font-size:13px;font-weight:700;font-family:var(--heading);color:var(--green);min-height:18px;letter-spacing:0.02em;text-transform:uppercase;}
+
+/* ── SHARE BTN ── */
+.share-wrap{padding:4px 20px 40px;}
+.share-btn{
+  width:100%;
+  background:var(--green);color:#0E2010;
+  border:none;border-radius:50px;
+  padding:18px 24px;
+  font-family:var(--heading);font-size:17px;font-weight:900;
+  cursor:pointer;letter-spacing:0.06em;text-transform:uppercase;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  transition:all 0.18s ease;
+  box-shadow:0 4px 20px rgba(123,193,67,0.35);
+}
+.share-btn:active{transform:scale(0.97);background:var(--green2);}
+.wa-icon{width:22px;height:22px;flex-shrink:0;}
+.terms{
+  text-align:center;font-size:10px;
+  color:rgba(255,255,255,0.25);
+  margin-top:14px;line-height:1.7;
+}
+</style>
+</head>
+<body>
+
+<!-- New user arrival banner -->
+<div id="new-banner">
+  <p>🧋 Your friend invited you!</p>
+  <span>Kawan anda menjemput anda — tuntut tawaran eksklusif anda ↓</span>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="brand-row">
+    <div class="brand-name">MOMOYO</div>
+    <a href="#" class="tcs-link">T&Cs</a>
+  </div>
+
+  <div class="hero-eyebrow">Invite your Friends to Order</div>
+
+  <h1 class="hero-h1">Double<br>the <em>Fun!</em></h1>
+  <div class="hero-sub">SHARE &amp; BOTH GET REWARDED</div>
+
+  <!-- Big discount -->
+  <div class="discount-block" id="discount-display">
+    <div class="d-both">Both<br>GET<span>share now</span></div>
+    <div class="d-num" id="d-num">30</div>
+    <div class="d-pct">
+      <span class="d-pct-sym">%</span>
+      <span class="d-off">OFF</span>
+    </div>
+  </div>
+
+  <div class="hero-series">Matcha Series 2.0</div>
+
+  <!-- Drinks -->
+  <div class="drinks">
+    <div class="drink" style="transform:translateX(12px) translateY(14px)">
+      <div class="drink-label">The "OG" Matcha latte</div>
+      <div class="drink-img">🧋</div>
+    </div>
+    <div class="drink center">
+      <div class="drink-label">Thai Coconut Matcha</div>
+      <div class="new-badge">NEW!</div>
+      <div class="drink-img">🍵</div>
+    </div>
+    <div class="drink" style="transform:translateX(-12px) translateY(14px)">
+      <div class="drink-label">Matcha Strawberry latte</div>
+      <div class="drink-img">🥤</div>
+    </div>
+  </div>
+</div>
+
+<!-- UID row -->
+<div class="uid-row" id="uid-row">
+  <span class="uid-label">Your Referral ID</span>
+  <span class="uid-val" id="uid-display">—</span>
+</div>
+
+<!-- MODE TOGGLE -->
+<div class="mode-wrap">
+  <div class="mode-toggle">
+    <button class="mode-btn active" id="btn-simple" onclick="switchMode('simple')">
+      <span class="mico">💌</span>
+      Share & Both<br>Get 30% OFF
+    </button>
+    <button class="mode-btn" id="btn-rich" onclick="switchMode('rich')">
+      <span class="mico">🎯</span>
+      Order & Unlock<br>Up to FREE
+    </button>
+  </div>
+</div>
+
+<!-- PANEL: SIMPLE -->
+<div class="panel active" id="panel-simple">
+  <div class="simple-main">
+    <div class="s-big">30</div>
+    <div class="s-off">% OFF</div>
+    <div class="s-each">For you & your friend · Untuk anda & rakan anda</div>
+    <div class="both-chip">
+      <span style="font-size:26px">🤝</span>
+      <p>Forward your link — you BOTH get 30% OFF.<br>
+        <small>Tiada pembelian minimum · No minimum spend</small>
+      </p>
+    </div>
+  </div>
+  <div class="how-card">
+    <div class="how-title">How it works · Cara ia berfungsi</div>
+    <div class="how-row">
+      <div class="how-n">1</div>
+      <span>Tap <strong style="color:var(--white)">Share Now</strong> and send your link via WhatsApp</span>
+    </div>
+    <div class="how-row">
+      <div class="how-n">2</div>
+      <span>Your friend opens the link · Rakan anda buka pautan</span>
+    </div>
+    <div class="how-row">
+      <div class="how-n">3</div>
+      <span>Both get <strong style="color:var(--green)">30% OFF</strong> voucher instantly 🎉</span>
+    </div>
+  </div>
+</div>
+
+<!-- PANEL: RICH -->
+<div class="panel" id="panel-rich">
+
+  <div class="sec-label">New Customer · Pelanggan Baru</div>
+  <div class="rcard">
+    <div class="role-tag tag-new">Invited Friend · Rakan Dijemput</div>
+    <div class="r-row">
+      <div class="r-icon ri-check">✓</div>
+      <div class="r-text">
+        <h4>Register via friend's link</h4>
+        <p>Daftar melalui pautan rakan · Unlock on sign up</p>
+        <span class="voucher-pill vp-gold">50% OFF Welcome Voucher</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-label" style="margin-top:4px;">Referrer Rewards · Ganjaran Penjemput</div>
+  <div class="rcard">
+    <div class="role-tag tag-old">Existing Customer · Pelanggan Sedia Ada</div>
+
+    <div class="r-row">
+      <div class="r-icon ri-green">1</div>
+      <div class="r-text">
+        <h4>1 Friend Places an Order</h4>
+        <p>1 rakan buat pesanan pertama</p>
+        <p class="ms">Referee must complete their first order</p>
+        <span class="voucher-pill vp-green">50% OFF Voucher × 1</span>
+      </div>
+    </div>
+
+    <div class="r-row">
+      <div class="r-icon ri-gold">3</div>
+      <div class="r-text">
+        <h4>3 Friends Place Orders</h4>
+        <p>3 rakan buat pesanan pertama</p>
+        <p class="ms">All 3 referees must complete their first order</p>
+        <span class="voucher-pill vp-gold">FREE Matcha 2.0 Redemption 🍵</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Progress tracker -->
+  <div class="prog-box">
+    <div class="prog-head">
+      <span>My Referrals · Rujukan Saya</span>
+      <span class="prog-num" id="prog-count">0/3</span>
+    </div>
+    <div class="prog-bg">
+      <div class="prog-fill" id="prog-fill" style="width:0%"></div>
+    </div>
+    <div class="prog-marks">
+      <span>0</span>
+      <span class="m">1 → 50% OFF</span>
+      <span>2</span>
+      <span class="m">3 → FREE 🍵</span>
+    </div>
+    <div class="prog-msg" id="prog-msg"></div>
+  </div>
+
+</div>
+
+<!-- SHARE BUTTON -->
+<div class="share-wrap">
+  <button class="share-btn" onclick="shareLink()">
+    <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+    Share Now · Kongsi Sekarang
+  </button>
+  <p class="terms">
+    T&Cs apply · Vouchers valid 30 days · One per customer<br>
+    Tertakluk kepada syarat · Baucar sah 30 hari · Satu per pelanggan
+  </p>
+</div>
+
+<script>
+// ── Read URL params ──
+const params = new URLSearchParams(window.location.search);
+const uid = params.get('uid');   // Chattech pushes ?uid=XXXX to existing user
+const ref = params.get('ref');   // friend's shared link ?ref=XXXX
+
+if (uid) {
+  const row = document.getElementById('uid-row');
+  row.style.display = 'flex';
+  document.getElementById('uid-display').textContent = uid;
+  // TODO: fetch real referral count
+  // fetchReferralCount(uid);
+}
+
+if (ref && !uid) {
+  document.getElementById('new-banner').style.display = 'block';
+  switchMode('rich');
+  try { localStorage.setItem('momoyo_ref', ref); } catch(e) {}
+}
+
+// ── Mode switch ──
+function switchMode(mode) {
+  ['simple','rich'].forEach(m => {
+    document.getElementById('panel-' + m).classList.toggle('active', m === mode);
+    document.getElementById('btn-' + m).classList.toggle('active', m === mode);
+  });
+  // Update hero discount number
+  const num = document.getElementById('d-num');
+  if (mode === 'rich') {
+    num.textContent = '50';
+  } else {
+    num.textContent = '30';
+  }
+}
+
+// ── Share ──
+function shareLink() {
+  const myId = uid || 'GUEST';
+  const baseUrl = window.location.origin + window.location.pathname;
+  const shareUrl = baseUrl + '?ref=' + myId;
+  const isRich = document.getElementById('panel-rich').classList.contains('active');
+
+  const text = isRich
+    ? '🧋 Join me at Momoyo!\n\nSign up with my link and get 50% OFF your first order:\n' + shareUrl + '\n\n(Daftar, dapat 50% OFF pesanan pertama!)'
+    : '🧋 Double the Fun at Momoyo!\n\nUse my link — we BOTH get 30% OFF:\n' + shareUrl + '\n\n(Guna pautan saya, kita berdua dapat 30% OFF!)';
+
+  if (navigator.share) {
+    navigator.share({ title: 'Momoyo – Double the Fun!', text, url: shareUrl });
+  } else {
+    navigator.clipboard.writeText(text).then(() => {
+      alert('Link copied! Paste it in WhatsApp 🎉\nPautan disalin! Tampal dalam WhatsApp 🎉');
+    });
+  }
+}
+
+// ── Demo progress (replace with API when Chattech ready) ──
+// Call addDemo() in browser console to test
+let demoCount = 0;
+function addDemo() {
+  if (demoCount >= 3) return;
+  demoCount++;
+  const pct = Math.round((demoCount / 3) * 100);
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('prog-count').textContent = demoCount + '/3';
+  const msg = document.getElementById('prog-msg');
+  if (demoCount === 1) msg.textContent = '🎉 50% OFF Voucher Unlocked!';
+  else if (demoCount === 2) msg.textContent = '⚡ One More Friend for Your FREE Drink!';
+  else msg.textContent = '🍵 FREE Matcha 2.0 Unlocked!';
+}
+
+/* When Chattech API is ready, replace addDemo() with:
+async function fetchReferralCount(userId) {
+  const res = await fetch('/api/referrals?uid=' + userId);
+  const data = await res.json();
+  const count = data.count; // 0, 1, 2, or 3
+  const pct = Math.round((Math.min(count,3) / 3) * 100);
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('prog-count').textContent = count + '/3';
+  // trigger reward messages...
+}
+*/
+</script>
+</body>
+</html>
